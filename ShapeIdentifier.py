@@ -63,6 +63,7 @@ while coordNumber == "3" or "4":
         UserYCoord = [threeInputYOneNew, threeInputYTwoNew, threeInputYThreeNew]
         plt.plot(UserXCoord, UserYCoord)
         plt.show()
+        plt.savefig('graphthree.png')
         print ("")
         
         break
@@ -187,10 +188,12 @@ while coordNumber == "3" or "4":
         #Plotting the shape on a visual display
         print ("")
         print ("Here is a graph displaying the co-ordinates you entered:")
-        UserXCoord = [fourInputXOneNew, fourInputXTwoNew, fourInputXThreeNew, fourInputXFourNew]
-        UserYCoord = [fourInputYOneNew, fourInputYTwoNew, fourInputYThreeNew, fourInputYFourNew]
-        plt.plot(UserXCoord, UserYCoord)
-        plt.show()
+
+
+        points = [[fourInputXOneNew, fourInputYOneNew], [fourInputXTwoNew, fourInputYTwoNew], [fourInputXThreeNew, fourInputYThreeNew], [fourInputXFourNew, fourInputYFourNew]]
+        polygon = plt.Polygon(points)
+        matplotlib.pyplot.plot
+        plt.savefig('graphfour.png')
         print ("")
         
         break
