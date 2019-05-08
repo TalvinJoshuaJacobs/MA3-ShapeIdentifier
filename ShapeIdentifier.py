@@ -7,6 +7,7 @@
 #Imports
 import math
 import matplotlib.pyplot as plt
+from shapely.geometry.polygon import LinearRing, Polygon
 
 print ("Welcome to the Shape Identifier Program!")
 print ("")
@@ -57,11 +58,15 @@ while coordNumber == "3" or "4":
         threeInputYThreeNew = threeInputYThree * Scale
 
         #Using the new variables and matplotlib to display the final result
-        print ("")
-        print ("Here is a graph displaying the co-ordinates you entered:")
-        UserXCoord = [threeInputXOneNew, threeInputXTwoNew, threeInputXThreeNew]
-        UserYCoord = [threeInputYOneNew, threeInputYTwoNew, threeInputYThreeNew]
-        plt.plot(UserXCoord, UserYCoord)
+        poly = Polygon([(threeInputXOneNew, threeInputYOneNew), (threeInputXTwoNew, threeInputYTwoNew), (threeInputXThreeNew, threeInputYThreeNew)])
+        x,y = poly.exterior.xy
+
+        fig = plt.figure(1, figsize=(5,5), dpi=90)
+        ax = fig.add_subplot(111)
+        ax.plot(x, y, color='#6699cc', alpha=0.7, 
+          linewidth=3 , solid_capstyle='round', zorder=2)
+        ax.set_title('Shape')
+        
         plt.show()
         plt.savefig('graphthree.png')
         print ("")
@@ -70,6 +75,8 @@ while coordNumber == "3" or "4":
 
     #Get the coordinates from the user
     elif coordNumber == "4":
+        print ("[Enter the co-ordinates in clockwise or counter-clockwise order]")
+        print ("")
         fourInputXOne = int(input ("Please enter the x value of the first co-ordinate "))
         fourInputYOne = int(input ("Please enter the y value of the first co-ordinate "))
         print ("")
@@ -185,17 +192,18 @@ while coordNumber == "3" or "4":
         fourInputYThreeNew = fourInputYThree * Scale
         fourInputYFourNew = fourInputYFour * Scale
 
-        #Plotting the shape on a visual display
-        print ("")
-        print ("Here is a graph displaying the co-ordinates you entered:")
+        poly = Polygon([(fourInputXOneNew, fourInputYOneNew), (fourInputXTwoNew, fourInputYTwoNew), (fourInputXThreeNew, fourInputYThreeNew), (fourInputXFourNew, fourInputYFourNew)])
+        x,y = poly.exterior.xy
 
+        fig = plt.figure(1, figsize=(5,5), dpi=90)
+        ax = fig.add_subplot(111)
+        ax.plot(x, y, color='#6699cc', alpha=0.7, 
+          linewidth=3 , solid_capstyle='round', zorder=2)
+        ax.set_title('Shape')
 
-        points = [[fourInputXOneNew, fourInputYOneNew], [fourInputXTwoNew, fourInputYTwoNew], [fourInputXThreeNew, fourInputYThreeNew], [fourInputXFourNew, fourInputYFourNew]]
-        polygon = plt.Polygon(points)
-        matplotlib.pyplot.plot
+        plt.show()
         plt.savefig('graphfour.png')
-        print ("")
-        
+
         break
     
     #If the user has not entered a valid input for the number of co-ordinates to be entered
